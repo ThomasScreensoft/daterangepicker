@@ -909,6 +909,7 @@
                     i_in_24 = selected.hour() >= 12 ? (i == 12 ? 12 : i + 12) : (i == 12 ? 0 : i);
 
                 var time = selected.clone().hour(i_in_24);
+                var padded = i < 10 ? '0' + i : i;
                 var disabled = false;
                 if (minDate && time.minute(59).isBefore(minDate))
                     disabled = true;
@@ -916,11 +917,11 @@
                     disabled = true;
 
                 if (i_in_24 == selected.hour() && !disabled) {
-                    html += '<option value="' + i + '" selected="selected">' + i + '</option>';
+                    html += '<option value="' + i + '" selected="selected">' + padded + '</option>';
                 } else if (disabled) {
-                    html += '<option value="' + i + '" disabled="disabled" class="disabled">' + i + '</option>';
+                    html += '<option value="' + i + '" disabled="disabled" class="disabled">' + padded + '</option>';
                 } else {
-                    html += '<option value="' + i + '">' + i + '</option>';
+                    html += '<option value="' + i + '">' + padded + '</option>';
                 }
             }
 
